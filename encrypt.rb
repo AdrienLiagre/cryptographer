@@ -11,8 +11,12 @@ class EncryptionEngine
 
 
 
-  def decrypt(string)
-
+  def decrypt(crypt_message)
+    array_letters = crypt_message.split("")
+    array_letters.map! do |letter|
+      encrypt_letter(letter)
+    end
+    array_letters.join("")
   end
 
   private
@@ -36,5 +40,7 @@ class EncryptionEngine
   end
 end
   engine = EncryptionEngine.new
-  puts engine.encrypt("Mon MeSSage")
+  message_encrypt = engine.encrypt("Mon MeSSage")
+  puts message_encrypt
+  puts engine.decrypt(message_encrypt)
 
